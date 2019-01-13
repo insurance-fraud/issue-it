@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
 
     amount = params[:amount].to_f
 
-    if user.total_balance - user.reserved_balance > amount
+    if user.total_balance - user.reserved_balance >= amount
       user.update(reserved_balance: user.reserved_balance + amount)
 
       render json: { success: true,
